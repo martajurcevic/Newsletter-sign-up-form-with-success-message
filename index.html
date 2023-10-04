@@ -3,11 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Newsletter sign-up</title>
-    <link
-      rel="stylesheet"
-      href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
-    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Newsletter</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,44 +14,56 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="newsletter">
-      <div class="newsletter__image"></div>
-      <section class="newsletter__content">
+    <main class="container" id="main">
+      <div class="illustration">
+        <picture>
+          <source
+            srcset="images/illustration-sign-up-desktop.svg"
+            media="(min-width: 800px)"
+          />
+          <img
+            src="images/illustration-sign-up-mobile.svg"
+            alt="Illustration"
+          />
+        </picture>
+      </div>
+      <section class="content">
         <h1>Stay updated!</h1>
-        <div class="newsletter__info">
-          <p>Join 60,000+ product managers receiving monthly updates on:</p>
-          <ul class="newsletter__updates-on">
-            <li>
-              <p>Product discovery and building what matters</p>
-            </li>
-            <li>
-              <p>Measuring to ensure updates are a success</p>
-            </li>
-            <li>
-              <p>And much more!</p>
-            </li>
-          </ul>
-        </div>
-        <div class="newsletter__form">
-          <form novalidate id="newsletter-form" action="#">
-            <label for="email"
-              >Email address
-              <input
-                id="email"
-                class="newsletter__email-input"
-                type="email"
-                placeholder="email@company.com"
-              />
-            </label>
-            <button type="submit" class="newsletter__button button">
-              Subscribe to monthly newsletter
-            </button>
-            <p id="error-message" class="error-message error-message--hidden">
-              Valid email required
-            </p>
-          </form>
-        </div>
+        <p>Join 60,000+ product managers receiving monthly updates on:</p>
+        <ul>
+          <li>Product discovery and building what matters</li>
+          <li>Measuring to ensure updates are a success</li>
+          <li>And much more!</li>
+        </ul>
+        <form class="input-form" name="email-form">
+          <div class="email-label">
+            <label for="emailInput">Email address:</label>
+            <label id="email-warning" hidden>Valid email required</label>
+          </div>
+          <input
+            type="email"
+            id="emailInput"
+            name="emailInput"
+            placeholder="email@company.com"
+            required
+          />
+          <button type="submit" id="subscribeToNewsletter">
+            Subscribe to monthly newsletter
+          </button>
+        </form>
       </section>
+    </main>
+    <div class="modal hidden" id="modal">
+      <div class="message">
+        <img src="images/icon-success.svg" alt="Success icon" />
+        <h1>Thanks for subscribing!</h1>
+        <p>
+          A confirmation email has been sent to
+          <span class="user-mail" id="userMail"></span>. Pleas open it and click
+          the button inside to confirm your subscription
+        </p>
+      </div>
+      <button type="submit" id="dismissButton">Dismiss message</button>
     </div>
     <script src="script.js"></script>
   </body>
